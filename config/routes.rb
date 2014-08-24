@@ -1,4 +1,4 @@
-KnockoutTest::Application.routes.draw do
+Promillekalkulator::Application.routes.draw do
 
   root 'home#index'
 
