@@ -1,0 +1,63 @@
+
+<h1>Promillekalkulator</h1>
+
+<style>
+	.add_drink {
+		display: none;
+	}
+</style>
+
+<form>
+	<input type="radio" name="inputGender" value="Male" data-bind="checked: gender" checked="checked">Mann</input>
+	<input type="radio" name="inputGender" value="Female" data-bind="checked: gender">Kvinne</input>
+	<p>
+		<input type="number" data-bind="value: bodyWeight">Kroppsvekt i kg</input><br />
+	</p>
+
+	<table>
+		<thead>
+			<th>Hva</th>
+			<th>Milliliter</th>
+			<th>Prosent</th>
+			<th>Dato</th>
+			<th>Tid</th>
+			<th></th>
+		</thead>
+
+		<tbody data-bind="foreach: drinks">
+			<tr>
+				<td><input type="text" data-bind="value: name" /></td>
+				<td><input type="number" data-bind="value: size" /></td>
+				<td><input type="number" data-bind="value: percentage" /></td>
+				<td><input type="text" class="datepicker" data-bind="value: date" /></input></td>
+				<td><input type="text" class="timepicker" data-bind="value: time"/></input></td>
+				<td><a href="#" data-bind="click: $root.removeDrink">Fjern</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<button data-bind="
+		click: function() { 
+			addDrink();
+			$('.datepicker').pickadate({
+				max: true,
+				monthsFull: [ 'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember' ],
+				weekdaysShort: [ 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn' ],
+				today: 'I dag',
+				clear: 'Fjern',
+				close: 'Lukk'
+			});
+			$('.timepicker').pickatime({
+				max: true,
+				format: 'HH:i'
+			});
+		}
+		">Legg til ny drikke
+	</button>
+
+	<p>
+		<!--<h2>Test: <span data-bind="text: test()"></h2>-->
+		<h2>Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
+		<h2>Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
+	</p>
+
+</form>
