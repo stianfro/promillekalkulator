@@ -21,6 +21,15 @@ function DrinkItem(drinkName, drinkSize, drinkPercentage, drinkTime) {
         return 0;
     });
 
+    self.minutesSinceDrink = ko.computed(function() {
+    	var minutes = Math.round((new Date() - self.dateTime()) / 1000 / 60);
+    	if (minutes > 0) {
+    		return minutes;
+    	}
+
+    	return 0;
+    })
+
     self.gramsAlcohol = ko.computed(function() {
         return GetGramsAlcoholPerDrink(self.percentage(), self.size());
     });
@@ -34,23 +43,6 @@ function GetGramsAlcoholPerDrink(percentage, milliliters) {
 }
 
 
-/*function GetBloodAlcoholConcentration(drinks, gender, weight, drinkingHours) {
-    var gramsAlcohol = 0;
-    for (var i = 0; i < drinks.length; i++) {
-        gramsAlcohol += GetGramsAlcoholPerDrink(drinks[i].percentage(), drinks[i].size());
-    }
-
-    var effectiveWeight;
-    if (gender === "Male") {
-        effectiveWeight = weight * 0.7;
-    }
-    else if (gender === "Female") {
-        effectiveWeight = weight * 0.6;
-    }
-
-    return (gramsAlcohol / effectiveWeight) - (0.15 * drinkingHours);
-}*/
-
 function GetBloodAlcoholConcentration(drink, gender, weight) {
     var effectiveWeight;
     if (gender === "Male") {
@@ -60,7 +52,7 @@ function GetBloodAlcoholConcentration(drink, gender, weight) {
         effectiveWeight = weight * 0.6;
     }
 
-    var bac = (drink.gramsAlcohol() / effectiveWeight) - (0.15 * drink.hoursSinceDrink());
+    var bac = (drink.gramsAlcohol() / effectiveWeight) - (0.0025 * drink.minutesSinceDrink());
 
     if (bac > 0) {
         return bac;
@@ -76,10 +68,7 @@ function HomeViewModel() {
     self.bodyWeight = ko.observable("70");
     self.gender = ko.observable("Male");
 
-    self.drinks = ko.observableArray(
-        //new DrinkItem("Øl", "500", "4.7", "20:00")
-    );
-
+    self.drinks = ko.observableArray();
 
     self.addDrink = function(name, size, percentage, time) {
         self.drinks.push(new DrinkItem(name, size, percentage, time));
@@ -89,15 +78,6 @@ function HomeViewModel() {
         self.drinks.remove(drink);
     }
 
-    /*self.totalDrinkingHours = ko.computed(function() {
-        var total = 0;
-        for(var i = 0; i < self.drinks().length; i++) {            
-            total += self.drinks[i].time;
-        }
-
-        return total;
-    });*/ 
-    //self.test = GetBloodAlcoholConcentration(self.drinks[0], self.gender(), self.bodyWeight(), 0);
 
     self.bac = ko.computed(function() {
         var promille = 0;
