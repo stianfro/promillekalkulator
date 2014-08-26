@@ -6,7 +6,7 @@ function DrinkItem(drinkName, drinkSize, drinkPercentage, drinkTime) {
     self.size = ko.observable("500");
     self.percentage = ko.observable("4.7");
     self.time = ko.observable();
-    self.date = ko.observable();
+    self.date = ko.observable();    
 
     self.dateTime = ko.computed(function() {
         return new Date(self.date() + " " + self.time());
