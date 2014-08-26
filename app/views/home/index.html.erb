@@ -45,7 +45,10 @@
 				today: 'I dag',
 				clear: 'Fjern',
 				close: 'Lukk',
-	            set('select', new Date())
+	            onStart: function () {
+	                var date = new Date();
+	                this.setDate( date.getFullYear(), date.getMonth() + 1, date.getDate() )
+	            }
 			});
 			$('.timepicker').pickatime({
 				max: true,
