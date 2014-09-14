@@ -1,20 +1,46 @@
 
-<h1>Promillekalkulator</h1>
+<h1 id="header">Promillekalkulator</h1>
 
-<style>
-	.add_drink {
-		display: none;
-	}
-</style>
+<div class="personInfo panel">
+	<div class="ui raised segment">
+		<div class="ui form">
+			
+			<div class="radioArea">
+				<div class="grouped inline fields">
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" id="radioMann" name="inputGender" value="Male" data-bind="checked: gender" checked="checked" />
+							<label for="radioMann">Mann</label>
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" id="radioKvinne" name="inputGender" value="Female" data-bind="checked: gender" />
+							<label for="radioKvinne">Kvinne</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chooseWeight">
+				<div class="field">
+					<label>Kroppsvekt i kg</label>
+					<input type="number" data-bind="value: bodyWeight" />
+				</div>
+			</div>
+			
+			<div class="showBac">
+				<h2><span data-bind="visible: bac() === 0">Du har ikke promille!</span></h2>
+				<h2 data-bind="visible: drinks().length > 0">Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
+				<h2 data-bind="visible: bac() > 0">Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
+			</div>
+			
+		</div> <!-- end class ui form -->
+	</div>
+</div>
 
-<form>
-	<input type="radio" name="inputGender" value="Male" data-bind="checked: gender" checked="checked">Mann</input>
-	<input type="radio" name="inputGender" value="Female" data-bind="checked: gender">Kvinne</input>
-	<p>
-		<input type="number" data-bind="value: bodyWeight">Kroppsvekt i kg</input><br />
-	</p>
-
-	<table>
+<div class="drinkList panel">
+	<table class="ui small table segment">
 		<thead>
 			<th>Hva</th>
 			<th>Milliliter</th>
@@ -35,29 +61,23 @@
 			</tr>
 		</tbody>
 	</table>
-	<button data-bind="
-		click: function() { 
-			addDrink();
-			$('.datepicker').pickadate({
-				max: true,
-				monthsFull: [ 'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember' ],
-				weekdaysShort: [ 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn' ],
-				today: 'I dag',
-				clear: 'Fjern',
-				close: 'Lukk'
-			});
-			$('.timepicker').pickatime({
-				max: true,
-				format: 'HH:i'
-			});
-		}
-		">Legg til ny drikke
-	</button>
-
-	<p>
-		<!--<h2>Test: <span data-bind="text: test()"></h2>-->
-		<h2>Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
-		<h2>Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
-	</p>
-
-</form>
+		<button data-bind="
+			click: function() { 
+				addDrink();
+				$('.datepicker').pickadate({
+					max: true,
+					monthsFull: [ 'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember' ],
+					weekdaysShort: [ 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn' ],
+					today: 'I dag',
+					clear: 'Fjern',
+					close: 'Lukk'
+				});
+				$('.timepicker').pickatime({
+					max: true,
+					format: 'HH:i'
+				});
+			}
+			">Legg til ny drikke
+		</button>
+	</div> <!-- end drinkList panel -->
+</div> <!-- end column -->

@@ -1,3 +1,39 @@
-body {
-	
+#header {
+	text-align: center;
+}
+
+.personInfo {
+	margin: 0 auto;
+	width: 700px;
+}
+
+.radioArea {
+	width: 100px;
+	float: left;
+	border-right: 1px solid #EEE;
+}
+
+.chooseWeight {
+	width: 150px;
+	float: left;
+	margin-left: 20px;
+	padding-right: 20px;
+	border-right: 1px solid #EEE;
+}
+
+.showBac {
+	width: 320px;
+	float: left;
+	margin-left: 20px;
+	text-align: center;
+}
+
+.showBac h2 {
+	margin: 0;
+}
+
+.drinkList {
+	width: 1200px;
+	padding-top: 20px;
+	margin: 0 auto;
 }
