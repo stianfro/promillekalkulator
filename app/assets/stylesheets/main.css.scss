@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:200);
+
+html {
+
+	font-family: 'Raleway', sans-serif;
+	//background-image: image-url('header_texture.jpg');
+	min-height: 779px;
+
+	background: #b0d8f2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #b0d8f2 0%, #1e5799 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b0d8f2), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #b0d8f2 0%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #b0d8f2 0%,#1e5799 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #b0d8f2 0%,#1e5799 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #b0d8f2 0%,#1e5799 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d8f2', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+
+	background-size: cover;
+}
+
+#header {
+	text-align: center;
+}
+
+.personInfo {
+	margin: 0 auto;
+	width: 700px;
+}
+
+.radioArea {
+	width: 100px;
+	float: left;
+	border-right: 1px solid #EEE;
+}
+
+.chooseWeight {
+	width: 150px;
+	float: left;
+	margin-left: 20px;
+	padding-right: 20px;
+	border-right: 1px solid #EEE;
+}
+
+.showBac {
+	width: 320px;
+	float: left;
+	margin-left: 20px;
+	text-align: center;
+}
+
+.showBac h2 {
+	margin: 0;
+}
+
+.drinkList {
+	width: 1200px;
+	padding-top: 20px;
+	margin: 0 auto;
+}

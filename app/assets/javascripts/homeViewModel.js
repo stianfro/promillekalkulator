@@ -52,7 +52,7 @@ function GetBloodAlcoholConcentration(drink, gender, weight) {
         effectiveWeight = weight * 0.6;
     }
 
-    var bac = (drink.gramsAlcohol() / effectiveWeight) - (0.0025 * drink.minutesSinceDrink());
+    var bac = (drink.gramsAlcohol() / effectiveWeight);// - (0.0025 * drink.minutesSinceDrink());
 
     if (bac > 0) {
         return bac;
@@ -84,6 +84,11 @@ function HomeViewModel() {
         for (var i = 0; i < self.drinks().length; i++) {
             promille += GetBloodAlcoholConcentration(self.drinks()[i], self.gender(), self.bodyWeight());
         }
+
+        if (self.drinks().length > 0) {
+            promille = promille - (0.0025 * self.drinks()[0].minutesSinceDrink());
+        }
+
         return promille;
     });
 }

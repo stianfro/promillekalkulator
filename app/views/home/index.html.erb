@@ -40,6 +40,24 @@
 </div>
 
 <div class="drinkList panel">
+	<button data-bind="
+		click: function() { 
+			addDrink();
+			$('.datepicker').pickadate({
+				max: true,
+				monthsFull: [ 'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember' ],
+				weekdaysShort: [ 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn' ],
+				today: 'I dag',
+				clear: 'Fjern',
+				close: 'Lukk'
+			});
+			$('.timepicker').pickatime({
+				max: true,
+				format: 'HH:i'
+			});
+		}
+		">Legg til ny drikke
+	</button>
 	<table class="ui small table segment">
 		<thead>
 			<th>Hva</th>
@@ -61,23 +79,5 @@
 			</tr>
 		</tbody>
 	</table>
-		<button data-bind="
-			click: function() { 
-				addDrink();
-				$('.datepicker').pickadate({
-					max: true,
-					monthsFull: [ 'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember' ],
-					weekdaysShort: [ 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn' ],
-					today: 'I dag',
-					clear: 'Fjern',
-					close: 'Lukk'
-				});
-				$('.timepicker').pickatime({
-					max: true,
-					format: 'HH:i'
-				});
-			}
-			">Legg til ny drikke
-		</button>
-	</div> <!-- end drinkList panel -->
-</div> <!-- end column -->
+
+</div> <!-- end drinkList panel -->
