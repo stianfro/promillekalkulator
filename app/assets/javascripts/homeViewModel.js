@@ -86,7 +86,7 @@ function HomeViewModel() {
         }
 
         if (self.drinks().length > 0) {
-            promille = promille - (0.0025 * self.drinks()[0].minutesSinceDrink());
+            promille - (0.0025 * self.drinks()[0].minutesSinceDrink());
         }
 
         return promille;
