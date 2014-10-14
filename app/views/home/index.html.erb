@@ -26,12 +26,14 @@
 				<div class="field">
 					<label>Kroppsvekt i kg</label>
 					<input type="number" data-bind="value: bodyWeight" />
+					<label>Drikkestart</label>
+					<input type="number" data-bind="value: hoursSince"/></input>
 				</div>
 			</div>
 			
-			<div class="showBac">
-				<h2><span data-bind="visible: bac() === 0">Du har ikke promille!</span></h2>
+			<div class="showBac">				
 				<h2 data-bind="visible: drinks().length > 0">Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
+				<h2><span data-bind="visible: bac() === 0">Du har ikke promille!</span></h2>
 				<h2 data-bind="visible: bac() > 0">Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
 			</div>
 			

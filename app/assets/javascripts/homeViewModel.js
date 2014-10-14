@@ -67,6 +67,7 @@ function HomeViewModel() {
 
     self.bodyWeight = ko.observable("70");
     self.gender = ko.observable("Male");
+    self.hoursSince = ko.observable("0");
 
     self.drinks = ko.observableArray();
 
@@ -86,7 +87,11 @@ function HomeViewModel() {
         }
 
         if (self.drinks().length > 0) {
-            promille - (0.0025 * self.drinks()[0].minutesSinceDrink());
+            promille -= (0.150 * self.hoursSince());
+        }
+
+        if (promille < 0) {
+            promille = 0;
         }
 
         return promille;
