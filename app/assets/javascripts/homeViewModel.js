@@ -1,10 +1,10 @@
 
-function DrinkItem(drinkName, drinkSize, drinkPercentage, drinkTime) {
+function DrinkItem(drinkName, drinkSize, drinkPercentage) {
     var self = this;
 
-    self.name = ("Øl");
-    self.size = ko.observable("500");
-    self.percentage = ko.observable("4.7");
+    self.name = drinkName;
+    self.size = ko.observable(drinkSize);
+    self.percentage = ko.observable(drinkPercentage);
     self.time = ko.observable();
     self.date = ko.observable();    
 
@@ -71,8 +71,8 @@ function HomeViewModel() {
 
     self.drinks = ko.observableArray();
 
-    self.addDrink = function(name, size, percentage, time) {
-        self.drinks.push(new DrinkItem(name, size, percentage, time));
+    self.addDrink = function(name, size, percentage) {
+        self.drinks.push(new DrinkItem(name, size, percentage));
     }
 
     self.removeDrink = function(drink) {

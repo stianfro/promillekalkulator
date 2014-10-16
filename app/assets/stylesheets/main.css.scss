@@ -1,7 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:400);
 
 html {
-
 	font-family: 'Raleway', sans-serif;
 	//background-image: image-url('header_texture.jpg');
 	min-height: 100%;
@@ -30,7 +29,6 @@ html {
 .radioArea {
 	width: 100px;
 	float: left;
-	border-right: 1px solid #EEE;
 }
 
 .chooseWeight {
@@ -38,7 +36,9 @@ html {
 	float: left;
 	margin-left: 20px;
 	padding-right: 20px;
+	padding-left: 20px;
 	border-right: 1px solid #EEE;
+	border-left: 1px solid #EEE;
 }
 
 .showBac {
@@ -53,7 +53,7 @@ html {
 }
 
 .drinkList {
-	width: 1200px;
+	width: 50%;
 	padding-top: 20px;
 	margin: 0 auto;
 }
