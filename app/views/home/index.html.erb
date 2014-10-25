@@ -3,48 +3,52 @@
 
 <div class="personInfo panel">
 	<div class="ui raised segment">
-		<div class="ui form">
-			
-			<div class="radioArea">
-				<div class="grouped inline fields">
-					<div class="field">
-						<div class="ui radio checkbox">
-							<input type="radio" id="radioMann" name="inputGender" value="Male" data-bind="checked: gender" checked="checked" />
-							<label for="radioMann">Mann</label>
+		<div class="properties">
+			<div class="ui form">
+
+				<div class="radioArea">
+					<div class="grouped inline fields">
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" id="radioMann" name="inputGender" value="Male" data-bind="checked: gender" checked="checked" />
+								<label for="radioMann">Mann</label>
+							</div>
 						</div>
-					</div>
-					<div class="field">
-						<div class="ui radio checkbox">
-							<input type="radio" id="radioKvinne" name="inputGender" value="Female" data-bind="checked: gender" />
-							<label for="radioKvinne">Kvinne</label>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" id="radioKvinne" name="inputGender" value="Female" data-bind="checked: gender" />
+								<label for="radioKvinne">Kvinne</label>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="chooseWeight">
-				<div class="field">
+				
+				<div class="chooseWeight">
 					<label>Kroppsvekt i kg</label>
 					<input type="number" data-bind="value: bodyWeight" />
+				</div>
+
+				<div class="chooseHours">
 					<label>Timer siden drikkestart</label>
 					<input type="number" data-bind="value: hoursSince"/></input>
 				</div>
-			</div>
-			
+				
+
+				
+			</div> <!-- end class ui form -->
+		</div>
 			<div class="showBac">
 				<h2 data-bind="visible: drinks().length > 0">Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
 				<h2><span data-bind="visible: bac() === 0">Du har ikke promille!</span></h2>
 				<h2 data-bind="visible: bac() > 0">Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
 			</div>
-			
-		</div> <!-- end class ui form -->
 	</div>
 </div>
 
 <div class="drinkList panel">
 	<button class="button animated fade ui green small" data-bind="
 		click: function() { 
-			addDrink('Øl', '500', '4.7');
+			addDrink('Øl - halvliter', '500', '4.7');
 		}
 		">
 		<div class="visible content">Øl - 500ml</div>
@@ -52,7 +56,7 @@
 	</button>
 	<button class="button ui green small" data-bind="
 		click: function() { 
-			addDrink('Øl', '330', '4.7');
+			addDrink('Øl - 0,33', '330', '4.7');
 		}
 		">Øl - 330ml
 	</button>
@@ -82,7 +86,7 @@
 			<tr>
 				<td><input type="text" data-bind="value: name" /></td>
 				<td><input type="number" data-bind="value: size" /></td>
-				<td><input type="number" data-bind="value: percentage" /></td>
+				<td><input type="number" step="0.1" data-bind="value: percentage" /></td>
 				<!--<td><input type="text" class="datepicker" data-bind="value: date" /></input></td>
 				<td><input type="text" class="timepicker" data-bind="value: time"/></input></td>-->
 				<td><a class="button ui red small" href="#" data-bind="click: $root.removeDrink">Fjern</a></td>

@@ -29,23 +29,34 @@ html {
 .radioArea {
 	width: 100px;
 	float: left;
+	margin-left: 25px;
 }
 
 .chooseWeight {
-	width: 150px;
+	width: 200px;
 	float: left;
 	margin-left: 20px;
-	padding-right: 20px;
-	padding-left: 20px;
+	padding-right: 25px;
+	padding-left: 25px;
 	border-right: 1px solid #EEE;
 	border-left: 1px solid #EEE;
 }
 
-.showBac {
-	width: 320px;
+.properties {
+	width: 100%;
+	display: inline-block;
+}
+
+.chooseHours {
+	width: 200px;
 	float: left;
-	margin-left: 20px;
+	margin-left: 25px;
+}
+
+.showBac {
+	width: 100%;
 	text-align: center;
+	
 }
 
 .showBac h2 {
