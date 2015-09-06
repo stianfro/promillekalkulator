@@ -5,6 +5,8 @@ function DrinkItem(drinkName, drinkSize, drinkPercentage) {
     self.name = drinkName;
     self.size = ko.observable(drinkSize);
     self.percentage = ko.observable(drinkPercentage);
+    
+/*
     self.time = ko.observable();
     self.date = ko.observable();    
 
@@ -29,6 +31,7 @@ function DrinkItem(drinkName, drinkSize, drinkPercentage) {
 
     	return 0;
     })
+*/
 
     self.gramsAlcohol = ko.computed(function() {
         return GetGramsAlcoholPerDrink(self.percentage(), self.size());
@@ -61,6 +64,24 @@ function GetBloodAlcoholConcentration(drink, gender, weight) {
     return 0;
 }
 
+function isEquivalent(objectA, objectB) {
+    var aProps = Object.getOwnPropertyNames(objectA);
+    var bProps = Object.getOwnPropertyNames(objectB);
+
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        if (objectA[propName] !== objectB[propName]) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 function HomeViewModel() {
     var self = this;
@@ -79,6 +100,9 @@ function HomeViewModel() {
         self.drinks.remove(drink);
     }
 
+    self.duplicateDrink = function(drink) {
+        self.drinks.push(new DrinkItem(drink.name, drink.size(), drink.percentage()));
+    }
 
     self.bac = ko.computed(function() {
         var promille = 0;

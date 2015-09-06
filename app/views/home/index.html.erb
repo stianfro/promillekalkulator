@@ -1,91 +1,163 @@
 
 <h1 id="header">Promillekalkulator</h1>
 
-<div class="personInfo panel">
-	<div class="ui raised segment">
-		<div class="properties">
-			<div class="ui form">
+<div id="container">
+	<div class="personInfo">
+		<div class="ui raised segment">
+			<div class="properties">
+				<div class="ui form">
 
-				<div class="radioArea">
-					<div class="grouped inline fields">
-						<div class="field">
-							<div class="ui radio checkbox">
-								<input type="radio" id="radioMann" name="inputGender" value="Male" data-bind="checked: gender" checked="checked" />
-								<label for="radioMann">Mann</label>
+					<div class="radioArea">
+						<div class="grouped inline fields">
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input type="radio" id="radioMann" name="inputGender" value="Male" data-bind="checked: gender" checked="checked" />
+									<label for="radioMann">Mann</label>
+								</div>
 							</div>
-						</div>
-						<div class="field">
-							<div class="ui radio checkbox">
-								<input type="radio" id="radioKvinne" name="inputGender" value="Female" data-bind="checked: gender" />
-								<label for="radioKvinne">Kvinne</label>
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input type="radio" id="radioKvinne" name="inputGender" value="Female" data-bind="checked: gender" />
+									<label for="radioKvinne">Kvinne</label>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="chooseWeight">
-					<label>Kroppsvekt i kg</label>
-					<input type="number" data-bind="value: bodyWeight" />
-				</div>
+					
+					<div class="chooseWeight">
+						<label>Kroppsvekt i kg</label>
+						<input type="number" min="40" data-bind="value: bodyWeight" />
+					</div>
 
-				<div class="chooseHours">
-					<label>Timer siden drikkestart</label>
-					<input type="number" data-bind="value: hoursSince"/></input>
-				</div>
-				
+					<div class="chooseHours">
+						<label>Timer siden drikkestart</label>
+						<input type="number" min="0" data-bind="value: hoursSince"/></input>
+					</div>
 
-				
-			</div> <!-- end class ui form -->
-		</div>
-			<div class="showBac">
-				<h2 data-bind="visible: drinks().length > 0">Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
-				<h2><span data-bind="visible: bac() === 0">Du har ikke promille!</span></h2>
-				<h2 data-bind="visible: bac() > 0">Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
+					
+					
+				</div> <!-- end class ui form -->
 			</div>
+				<div class="showBac">
+					<h2 data-bind="visible: drinks().length > 0">Antall enheter drukket: <span data-bind="text: drinks().length"></span></h2>
+					<h2><span data-bind="visible: bac() === 0 && drinks().length > 0">Du har ikke promille!</span></h2>
+					<h2 data-bind="visible: bac() > 0">Promille: <span data-bind="text: bac().toFixed(3)"></span></h2>
+				</div>
+		</div>
+	</div> <!-- end class personInfo -->
+
+	<!--
+	Arrows
+	<img src="assets/TilpassInnstillingene.png" class="tilpassInnstillingene">
+	<img src="assets/HvaHarDuDrukket.png" class="HvaHarDuDrukket">
+	<img data-bind="visible: drinks().length > 0" src="assets/JusterDetaljene.png" class="justerDetaljene">
+	-->
+
+	<div class="addDrink ui raised segment">
+		<div>
+			<div id="manualInput">
+				<h2>Legg til drikke her</h2>
+				<div class="ui form">
+					<label>Hva drikker du?</label>
+					<input type="text" id="drinkName"name="drinkName" placeholder="Ringnes Pilsner" />
+
+					<label>Hvor mange milliliter?</label>
+					<input type="number" id="drinkSize" name="drinkSize" step="10" placeholder="500" />
+
+					<label>Hvor mange prosent alkohol?</label>
+					<input type="number" id="drinkPercentage" name="drinkPercentage" step="0.1" placeholder="4.5" />
+
+					<button class="ui button" data-bind="
+						click: function() {
+							var name = $('#drinkName').val();
+							var size = $('#drinkSize').val();
+							var percentage = $('#drinkPercentage').val();
+
+							addDrink(name, size, percentage);
+						}
+					">Legg til</button>
+				</div>
+			</div>
+
+			<div class="drinkList ui form" data-bind="foreach: drinks">
+				<div class="drinkItem">
+					<div>
+						<div class="drinkCounter">
+							<i class="fa fa-chevron-up"></i>
+							<div>1 x</div>
+							<i class="fa fa-chevron-down"></i>
+						</div>
+					</div>
+
+					<div class="drinkInputs">
+					  	<input type="text" data-bind="value: name" /> - 
+					  	<input type="number" value="500" size="4" step="10" data-bind="value: size" /> ml -
+					  	<input type="number" value="40.5" size="4" step="0.1" data-bind="value: percentage" /> %
+
+						<i class="fa fa-times fa-2x removeButton" data-bind="click: $root.removeDrink"></i>
+					</div>  
+				</div>
+			</div>
+
+			<!--
+
+
+			<div class="ui vertical divider">Eller</div>
+
+			<div id="predefinedChoices">
+				<h2>Velg hurtigvalg</h2>
+				<button class="button ui green small" data-bind="
+					click: function() { 
+						addDrink('Øl - halvliter', '500', '4.7');
+					}
+					">Øl - 500ml
+				</button>
+				<button class="button ui green small" data-bind="
+					click: function() { 
+						addDrink('Øl - 0,33', '330', '4.7');
+					}
+					">Øl - 330ml
+				</button>
+				<button class="button ui green small" data-bind="
+					click: function() { 
+						addDrink('1 Glass Vin', '150', '12');
+					}
+					">Vin - 150ml
+				</button>
+				<button class="button ui green small" data-bind="
+					click: function() { 
+						addDrink('Sprit (1 shot)', '40', '40');
+					}
+					">Sprit - 40ml
+				</button>
+			</div>
+			-->
+		</div>
 	</div>
+
+
+	<!--
+	<div class="drinkList" data-bind="visible: drinks().length > 0">
+		<table class="ui small table segment">
+			<thead>
+				<th>Hva</th>
+				<th>Milliliter</th>
+				<th>Prosent</th>
+				<th></th>
+				<th></th>
+			</thead>
+
+			<tbody data-bind="foreach: drinks">
+				<tr>
+					<td><input type="text" data-bind="value: name" /></td>
+					<td><input type="number" data-bind="value: size" /></td>
+					<td><input type="number" step="0.1" data-bind="value: percentage" /></td>
+					<td><a class="button ui small" href="#" data-bind="click: $root.duplicateDrink">Dupliser</a></td>
+					<td><a class="button ui small red" href="#" data-bind="click: $root.removeDrink">Fjern</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div> <!-- end drinkList -->
+
 </div>
-
-<div class="drinkList panel">
-	<button class="button ui green small" data-bind="
-		click: function() { 
-			addDrink('Øl - halvliter', '500', '4.7');
-		}
-		">Øl - 500ml
-	</button>
-	<button class="button ui green small" data-bind="
-		click: function() { 
-			addDrink('Øl - 0,33', '330', '4.7');
-		}
-		">Øl - 330ml
-	</button>
-	<button class="button ui green small" data-bind="
-		click: function() { 
-			addDrink('1 Glass Vin', '150', '12');
-		}
-		">Vin - 150ml
-	</button>
-	<button class="button ui green small" data-bind="
-		click: function() { 
-			addDrink('Sprit (1 shot)', '40', '40');
-		}
-		">Sprit - 40ml
-	</button>	
-	<table class="ui small table segment">
-		<thead>
-			<th>Hva</th>
-			<th>Milliliter</th>
-			<th>Prosent</th>
-			<th></th>
-		</thead>
-
-		<tbody data-bind="foreach: drinks">
-			<tr>
-				<td><input type="text" data-bind="value: name" /></td>
-				<td><input type="number" data-bind="value: size" /></td>
-				<td><input type="number" step="0.1" data-bind="value: percentage" /></td>
-				<td><a class="button ui red small" href="#" data-bind="click: $root.removeDrink">Fjern</a></td>
-			</tr>
-		</tbody>
-	</table>
-
-</div> <!-- end drinkList panel -->
