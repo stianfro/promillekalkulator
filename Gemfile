@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 gem 'tzinfo-data'
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
