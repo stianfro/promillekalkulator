@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require normalize
- *= require semantic.min
+ *= require semantic.min.css
  *= require default
  *= require default.date
  *= require default.time

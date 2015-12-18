@@ -6,4 +6,17 @@ $(document).ready(function() {
 	})
 
 	$('.timepicker').pickatime()
+
+	$('#info-button').click(function() {
+		$('.overlay.sidebar')
+	  		.sidebar({
+		    	overlay: false
+		  	})
+		  	.sidebar('toggle')
+		;
+
+		$('#info-button i').toggleClass("active");
+		$('#info-button span').toggle(300);
+	})
+
 });

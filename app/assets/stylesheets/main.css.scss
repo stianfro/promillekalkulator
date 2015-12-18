@@ -135,6 +135,28 @@ html {
 	float: right;
 }
 
+nav ul {
+	text-align: center;
+	padding-left: 0px;
+}
+
+nav ul li {
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 50px;
+}
+
+nav ul li:first-child {
+	margin-left: 0px;
+}
+
+.navActive {
+	background-color: #FFF;
+	border-radius: 2px;
+	width: 7%;
+	box-shadow: 1px 1px 1px #555;
+}
+
 .button {
 	font-family: sans-serif;
 }
@@ -158,4 +180,27 @@ html {
 	position: fixed;
 	left: 150px;
 	top: 550px;
+}
+
+#info-button {
+	background-color: #F8A000;
+	color: black;
+	font-weight: 400;
+	float: left;
+}
+
+#info-button span {
+	padding-right: 10px;
+}
+
+#info-button i {
+	transform: rotate(90deg);
+}
+
+#info-button i.active {
+	transform: rotate(270deg);
+}
+
+#sidebar > .item:first-child {
+	background-color: orange;
 }

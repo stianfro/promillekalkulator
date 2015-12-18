@@ -125,5 +125,10 @@ function HomeViewModel() {
 var vm = new HomeViewModel();
 
 $(document).ready(function() {
-    ko.applyBindings(vm);    
+    ko.applyBindings(vm);
+
+    $('nav ul li').click(function() {
+        $('.navActive').removeClass('navActive');
+        $(this).addClass('navActive');
+    });
 });
