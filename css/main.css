@@ -204,3 +204,15 @@ nav ul li:first-child {
 #sidebar > .item:first-child {
 	background-color: orange;
 }
+
+#sidebar .social_icons {
+	margin-left: 50px;
+}
+
+.fa-github {
+	color: #333;
+}
+
+.fa-twitter {
+	color: #4099FF;
+}
