@@ -4,8 +4,15 @@ html {
 	font-family: 'Raleway', sans-serif;
 	//background-image: image-url('header_texture.jpg');
 	min-height: 100%;
-
-	background: #cc0000;
+	
+        background: #b0d8f2; /* Old browsers */
+-	background: -moz-linear-gradient(top,  #b0d8f2 0%, #1e5799 100%); /* FF3.6+ */
+-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b0d8f2), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+-	background: -webkit-linear-gradient(top,  #b0d8f2 0%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+-	background: -o-linear-gradient(top,  #b0d8f2 0%,#1e5799 100%); /* Opera 11.10+ */
+-	background: -ms-linear-gradient(top,  #b0d8f2 0%,#1e5799 100%); /* IE10+ */
+-	background: linear-gradient(to bottom,  #b0d8f2 0%,#1e5799 100%); /* W3C */
+-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d8f2', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
 
 	background-size: cover;
 
